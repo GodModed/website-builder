@@ -1,0 +1,96 @@
+html, body {
+    background: #282828;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    overflow: hidden;
+}
+
+span {
+    color: white;
+}
+
+button, input[type=submit] {
+    height: auto;
+    width: 28rem;
+    border-radius: 2rem;
+    color: white;
+    background: #00000080;
+    border: 2px transparent #00000080;
+    overflow: auto;
+    position: relative;
+    transition: all 0.5s;
+    box-shadow: 0 0 2rem 2rem transparent;
+    margin: 0 0.5rem 1rem;
+    cursor: pointer;
+}
+
+input[type="text"] {
+    width: 28rem;
+    border-radius: 2rem;
+    color: white;
+    background: #00000080;
+    border: 2px transparent #00000080;
+    overflow: auto;
+    position: relative;
+    transition: all 0.5s;
+    box-shadow: 0 0 2rem 2rem transparent;
+    margin: 0 0.5rem 1rem;
+    cursor: pointer;
+}
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid black;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: greenyellow;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid black;
+}
+/* center the class container */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+
+@media only screen and (max-width: 440px) and (max-device-width: 440px) {
+    button, input[type=submit] {
+        width: 8rem;
+    }
+}
+
+@media only screen and (max-width: 300px) and (max-device-width: 300px) {
+    button, input[type="submit"] {
+        width: 6rem;
+    }
+}
+
+@media only screen and (max-height: 600px) and (max-device-height: 600px) {
+    button, input[type="submit"] {
+        width: 6rem;
+    }
+    
+}

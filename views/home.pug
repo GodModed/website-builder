@@ -1,0 +1,43 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{title}
+        style
+            include home.css
+    body
+        .container
+            noscript
+                p(style="color: red; font-size: 3em;") This page uses JavaScript. Please enable JavaScript in your browser.
+                p(style="line-height: 100000000%;")
+                    br
+                
+            .radio
+                label
+                    input(type="radio", name="background", value="video background" onclick="toggleOptions()" id="vid")
+                    span  Video Background
+                    input(type="text" name="video", placeholder="video url" id="video-url")
+                label
+                    input(type="radio", name="background", value="color background" onclick="toggleOptions()" id="color")
+                    span  Static Colored Background
+                    input(type="color", name="color", id="color-picker")
+            button(type="button", onclick="addButton()", class="custom-button")
+                span Add Button (Make the content of the button "rmv" to remove the button)
+            .buttons
+                .button
+                    span Button
+                    br
+                    input(type="text", id="button-text", placeholder="Button Text")
+                    input(type="text", id="button-redirect", placeholder="Button Link")
+            br
+            input(type="text" id="title", placeholder="Title")
+            br
+            input(type="text" id="description", placeholder="Description")
+            br
+            input(type="text" id="web-title", placeholder="Website Title")
+            br
+            input(type="submit" id="submit" onclick="checkOptions()")
+        script
+            include home.js

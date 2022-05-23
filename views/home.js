@@ -110,7 +110,10 @@ function sendRequest() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    })
+    }).then(res => res.json())
+        .then(res => {
+            window.location.href = "/site/" + res.website + ".html";
+        })
     submitbtn.disabled = true;
     setTimeout(function() {
         setCookie('canCreate', 'false', 7);

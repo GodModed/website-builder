@@ -100,7 +100,11 @@ router.post('/', function (req, res, next) {
     fs.writeFile('./static/site/' + data.webtitle + '.html', editTemplate, (err) => {
         if (err) throw err;
     });
-    res.redirect('/site' + data.webtitle + '.html');
+
+    const sent = {
+        website: data.webtitle
+    }
+    res.status(200).send(JSON.stringify(sent));
 })
 
 module.exports = router;

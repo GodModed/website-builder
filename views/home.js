@@ -55,7 +55,7 @@ function addButton() {
 
 let inputs = document.querySelectorAll("#button-text")
 
-function checkOptions() {
+async function checkOptions() {
     var vidbtn = document.querySelector('#vid')
     var colorbtn = document.querySelector('#color')
     var vidurl = document.querySelector('#video-url')
@@ -74,10 +74,10 @@ function checkOptions() {
     if (title.value == '') return alert("Please give a title for the page.");
     if (description.value == '') return alert("Please give a description for the page.");
     if (webtitle.value == '') return alert("Please give a title for the web page.");
-    sendRequest();
+    await sendRequest();
 }
 
-function sendRequest() {
+async function sendRequest() {
     if (getCookie('canCreate') == 'false') return alert("You cannot create another site for 7 days.");
     var vidbtn = document.querySelector('#vid')
     var colorbtn = document.querySelector('#color')
@@ -88,6 +88,7 @@ function sendRequest() {
     let description = document.querySelector('#description')
     let webtitle = document.querySelector('#web-title')
     let submitbtn = document.querySelector('#submit')
+    submitbtn.disabled = true;
     let data = {
         vid: vidbtn.checked,
         color: colorbtn.checked,
@@ -104,7 +105,7 @@ function sendRequest() {
             link: x.children[3].value
         })
     });
-    fetch('/api-create', {
+    await fetch('/api-create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -112,17 +113,13 @@ function sendRequest() {
         body: JSON.stringify(data)
     }).then(res => res.json())
         .then(res => {
+            setCookie('canCreate', 'false', 7);
             window.location.href = "/site/" + res.website + ".html";
         })
-    submitbtn.disabled = true;
-    setTimeout(function() {
-        setCookie('canCreate', 'false', 7);
-    }, 5000);
 }
 
 function setCookie(name,value,days) {
-    var expires = "";
-    if (days) {
+    var expires = "";   if (days) {
         var date = new Date();
         date.setTime(date.getTime() + (days*24*60*60*1000));
         expires = "; expires=" + date.toUTCString();
